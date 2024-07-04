@@ -1,0 +1,65 @@
+﻿@model IEnumerable<MvcWebMusica2.Models.Grupos>
+
+@{
+    ViewData["Title"] = "Grupos Musicales";
+}
+
+<h1>Grupos Musicales</h1>
+<p>
+    <a asp-action="Create"><i class="ps-3 fs-3 fa-solid fa-file-circle-plus" title="Crear nueva entrada"></i></a>
+    <a asp-action="DescargarExcel"><i class="ps-3 fs-3 fa-solid fa-file-excel" title="Descargar en Excel" style="color: #1d6f42;"></i></a>
+</p>
+<table class="table table-bordered border-primary table-hover tabla-indice">
+    <thead class="table-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.grupo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Generos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ciudades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Representantes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.grupo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Generos!.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudades!.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Representantes!.NombreCompleto)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square" title="Editar"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-eye" title="Detalles"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash" title="Borrar"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model MvcWebMusica2.Models.VideoClipsPlataformas
+
+@{
+    ViewData["Title"] = "Detalles de VideoClips/Plataformas";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>VideoClips / Plataformas</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VideoClips)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VideoClips!.Canciones!.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Plataformas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Plataformas!.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.url)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.url)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id"><i class="fa-solid fa-pen-to-square fs-3 mt-3" title="Editar"></i></a> |
+    <a asp-action="Index"><i class="fa-solid fa-rotate-left fs-3 mt-3" title="Volver al listado"></i></a>
+</div>

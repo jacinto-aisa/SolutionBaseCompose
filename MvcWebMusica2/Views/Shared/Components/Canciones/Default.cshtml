@@ -1,0 +1,75 @@
+﻿@model System.Collections.Generic.IEnumerable<MvcWebMusica2.Models.Canciones>
+
+<table class="table table-hover mb-0">
+    @* Muestra, o no, la cabecera de la tabla según el valor de "CabeceraTabla" *@
+    @if ((bool)ViewData["CabeceraTabla"]!)
+    {
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Duracion)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Single)
+            </th>
+        </tr>
+        </thead>
+    }
+    <tbody>
+    @{
+        // Si no hay conciones en la lista, mostrar un mensaje indicándolo
+        if (!Model.Any())
+        {
+            <tr>
+                <td colspan="3" class="text-center text-danger fw-bold border-0">
+                    No hay canciones
+                </td>
+            </tr>
+        }
+
+        foreach (var item in Model)
+        {
+            // Si es el último elemento de la lista, no mostrar borde inferior de la fila. Y si no, ponerlo de color rojo.
+            if (item == Model.Last())
+            {
+                TempData["BordeInferior"] = "border-bottom-0";
+            }
+            else
+            {
+                TempData["BordeInferior"] = "border-danger";
+            }
+
+            // Mostrar un 'check' verder o una 'x' roja según el valor de la propiedad Single de la canción.
+            if (item.Single)
+            {
+                TempData["CeldaSingle"] = "<i class='fa-solid fa-check text-success'></i>";
+            }
+            else
+            {
+                TempData["CeldaSingle"] = "<i class='fa-solid fa-xmark text-danger'></i>";
+            }
+
+            // Si no se muestra la cabecera de la tabla, añadir la palabra 'Single' al icono 'check' o 'x'.
+            if (!(bool)ViewData["CabeceraTabla"]!)
+            {
+                TempData["CeldaSingle"] += "&nbsp;Single";
+            }
+
+            <tr>
+                <td class=@TempData["BordeInferior"] width="60%">
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                    <td class="text-center @TempData["BordeInferior"]" width="20%">
+                    @Html.DisplayFor(modelItem => item.Duracion)
+                </td>
+                    <td class="text-center @TempData["BordeInferior"]" width="20%">
+                    @Html.Raw(TempData["CeldaSingle"])
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>

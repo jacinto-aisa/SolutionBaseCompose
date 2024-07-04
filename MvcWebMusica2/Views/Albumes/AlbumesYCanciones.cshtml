@@ -1,0 +1,52 @@
+﻿@using MvcWebMusica2.Services.Specification
+@model IEnumerable<MvcWebMusica2.Models.Albumes>
+
+@{
+    ViewData["Title"] = "Albumes Y Canciones";
+}
+
+<h1 class="text-center">Albumes Y Canciones</h1>
+
+<table class="table table-bordered border-primary table-hover tabla-export" data-page-length="25">
+    <thead class="bg-dark bg-opacity-75 text-light">
+    <tr>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Grupos)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Generos)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Canciones)
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr class="bg-info bg-opacity-25">
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td class="align-middle">
+                @Html.DisplayFor(modelItem => item.Grupos!.Nombre)
+            </td>
+            <td class="text-center align-middle">
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td class="text-center align-middle">
+                @Html.DisplayFor(modelItem => item.Generos!.Nombre)
+            </td>
+            <td>
+                @await Component.InvokeAsync("Canciones", new CancionesPorAlbumSpecification(item.Id))
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

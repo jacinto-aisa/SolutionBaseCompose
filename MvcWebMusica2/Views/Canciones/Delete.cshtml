@@ -1,0 +1,45 @@
+﻿@model MvcWebMusica2.Models.Canciones
+
+@{
+    ViewData["Title"] = "Borrar Canciones";
+}
+
+<h1>Borrar</h1>
+
+<h3>¿Está segurro de borrar esta canción?</h3>
+<div>
+    <h4>Canciones</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Duracion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Duracion, "{0:HH:mm:ss}")
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Albumes)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Albumes!.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Single)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Single)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-danger mt-3" /> |
+        <a asp-action="Index"><i class="fa-solid fa-rotate-left fs-3 mt-3" title="Volver al listado"></i></a>
+    </form>
+</div>

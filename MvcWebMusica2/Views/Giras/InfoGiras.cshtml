@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MvcWebMusica2.Models.Giras>
+
+@{
+    ViewData["Title"] = "InfoGiras";
+}
+
+<h1 class="text-center">Información de las Giras</h1>
+
+<table class="table table-bordered table-hover">
+    <thead class="bg-dark bg-opacity-75 text-light">
+        <tr>
+
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Grupos)
+            </th>
+            <th class="text-center">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-info">
+
+                <td class="text-end align-middle">
+                    @Html.DisplayFor(modelItem => item.Grupos!.Nombre)
+                </td>
+                <td class="text-center align-middle">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+
+            </tr>
+            <tr>
+                <td class="border-end-0"></td>
+                <td class="text-center border-start-0">
+                    @await Component.InvokeAsync("Giras", item.Id)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

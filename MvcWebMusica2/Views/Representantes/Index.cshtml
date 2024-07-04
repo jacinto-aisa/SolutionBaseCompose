@@ -1,0 +1,72 @@
+﻿@using MvcWebMusica2.Services.Specification
+@model IEnumerable<MvcWebMusica2.Models.Representantes>
+
+@{
+    ViewData["Title"] = "Representantes";
+}
+
+<h1>Representantes</h1>
+<p>
+    <a asp-action="Create"><i class="ps-3 fs-3 fa-solid fa-file-circle-plus" title="Crear nueva entrada"></i></a>
+    <a asp-action="DescargarExcel"><i class="ps-3 fs-3 fa-solid fa-file-excel" title="Descargar en Excel" style="color: #1d6f42;"></i></a>
+</p>
+<table class="table table-bordered border-primary table-hover tabla-indice">
+    <thead class="table-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ciudades)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <!-- VIEW COMPONENT -->
+            <th> Grupos que representa </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ciudades!.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Identificacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            @* <!-- VIEW COMPONENT --> *@
+            <td>
+                @await Component.InvokeAsync("Representantes", new RepresentanteSpecification(item.Id))
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square" title="Editar"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-eye" title="Detalles"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash" title="Borrar"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

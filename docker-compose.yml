@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  mvcwebmusica2:
+    image: ${DOCKER_REGISTRY-}mvcwebmusica2
+    build:
+      context: .
+      dockerfile: MvcWebMusica2/Dockerfile
+
+  mvcwebmusica2.test:
+    image: ${DOCKER_REGISTRY-}mvcwebmusica2test
+    build:
+      context: .
+      dockerfile: MvcWebMusica2.Test/Dockerfile
+
+  sql-server:
+    image: mcr.microsoft.com/mssql/server
+    container_name: sql-server-container
+    environment:
+      SA_PASSWORD: A&VeryComplex123Password
+      ACCEPT_EULA: Y
+    ports:
+      - "1433:1433"
+    volumes:
+      - "./initial.sql:/docker-entrypoint-initdb.d/1.sql"

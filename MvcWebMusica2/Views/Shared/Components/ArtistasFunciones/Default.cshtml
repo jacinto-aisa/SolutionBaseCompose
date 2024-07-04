@@ -1,0 +1,26 @@
+﻿@model System.Collections.Generic.IEnumerable<MvcWebMusica2.Models.FuncionesArtistas>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            
+        </th>
+        <th>
+           
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                    
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Funciones!.Nombre)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model MvcWebMusica2.Models.Funciones
+
+@{
+    ViewData["Title"] = "Borrar Funciones";
+}
+
+<h1>Borrar</h1>
+
+<h3>¿Está segurro de borrar esta función?</h3>
+<div>
+    <h4>Funciones</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Borrar" class="btn btn-danger mt-3" /> |
+        <a asp-action="Index"><i class="fa-solid fa-rotate-left fs-3 mt-3" title="Volver al listado"></i></a>
+    </form>
+</div>

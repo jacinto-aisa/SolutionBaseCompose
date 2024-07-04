@@ -1,0 +1,59 @@
+﻿@model MvcWebMusica2.Models.Grupos
+
+@{
+    ViewData["Title"] = "Editar Grupos Musicales";
+}
+
+<h1>Editar</h1>
+
+<h4>Grupos Musicales</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="grupo" /> @Html.DisplayNameFor(model => model.grupo)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenerosId" class="control-label"></label>
+                <select asp-for="GenerosId" class="form-control" asp-items="ViewBag.GenerosId"></select>
+                <span asp-validation-for="GenerosId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCreacion" class="control-label"></label>
+                <input asp-for="FechaCreacion" class="form-control" />
+                <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CiudadesId" class="control-label"></label>
+                <select asp-for="CiudadesId" class="form-control" asp-items="ViewBag.CiudadesId"></select>
+                <span asp-validation-for="CiudadesId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepresentantesId" class="control-label"></label>
+                <select asp-for="RepresentantesId" class="form-control" asp-items="ViewBag.RepresentantesId"></select>
+                <span asp-validation-for="RepresentantesId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index"><i class="fa-solid fa-rotate-left fs-3 mt-3" title="Volver al listado"></i></a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

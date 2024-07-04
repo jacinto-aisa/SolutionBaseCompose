@@ -1,0 +1,48 @@
+﻿@model System.Collections.Generic.IEnumerable<MvcWebMusica2.Models.Conciertos>
+
+<table class="table table-striped table-hover mb-0">
+    @*  <thead class="table-primary">
+    <tr>
+    <th>
+    @Html.DisplayNameFor(model => model.Ciudades)
+    </th>
+    <th>
+    @Html.DisplayNameFor(model => model.Fecha)
+    </th>
+    </tr>
+    </thead> *@
+    <tbody>
+
+        @{
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="2" class="text-center text-danger fw-bold">
+                        No hay datos disponibles
+                    </td>
+                </tr>
+            }
+
+            @foreach (var item in Model)
+            {
+                if (item == Model.Last())
+                {
+                    TempData["BordeInferior"] = "border-bottom-0";
+                }
+                else
+                {
+                    TempData["BordeInferior"] = "border-danger";
+                }
+
+                <tr>
+                    <td class=@TempData["BordeInferior"]>
+                        @Html.DisplayFor(modelItem => item.Direccion)
+                    </td>
+                    <td class=@TempData["BordeInferior"]>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

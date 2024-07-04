@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MvcWebMusica2.Test": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

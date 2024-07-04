@@ -1,0 +1,21 @@
+﻿@model System.Collections.Generic.IEnumerable<MvcWebMusica2.Models.Grupos>
+
+<table class="table">
+    <thead>
+        <tr>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th> *@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

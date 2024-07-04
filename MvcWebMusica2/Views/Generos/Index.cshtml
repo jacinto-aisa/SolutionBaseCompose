@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcWebMusica2.Models.Generos>
+
+@{
+    ViewData["Title"] = "Géneros Musicales";
+}
+
+<h1>Géneros Musicales</h1>
+<p>
+    <a asp-action="Create"><i class="ps-3 fs-3 fa-solid fa-file-circle-plus" title="Crear nueva entrada"></i></a>
+    <a asp-action="DescargarExcel"><i class="ps-3 fs-3 fa-solid fa-file-excel" title="Descargar en Excel" style="color: #1d6f42;"></i></a>
+</p>
+<table class="table table-bordered border-primary table-hover tabla-indice">
+    <thead class="table-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square" title="Editar"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-eye" title="Detalles"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash" title="Borrar"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

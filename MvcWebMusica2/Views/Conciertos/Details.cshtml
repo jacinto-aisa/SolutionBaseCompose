@@ -1,0 +1,42 @@
+﻿@model MvcWebMusica2.Models.Conciertos
+
+@{
+    ViewData["Title"] = "Detalles de Conciertos";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Conciertos</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Giras)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Giras!.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ciudades)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ciudades!.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id"><i class="fa-solid fa-pen-to-square fs-3 mt-3" title="Editar"></i></a> |
+    <a asp-action="Index"><i class="fa-solid fa-rotate-left fs-3 mt-3" title="Volver al listado"></i></a>
+</div>
